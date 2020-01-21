@@ -202,8 +202,15 @@ void setup()
   oled.clear(ALL);  // Clear the display's memory (gets rid of artifacts)
   // To actually draw anything on the display, you must call the
   // display() function. 
-  oled.display();   
-  delay(1000);//pause for the splash screen
+
+  oled.setFontType(1);  // Set font to type 1
+  oled.clear(PAGE);
+  oled.setCursor(0, 1);
+  oled.print("Artemis");
+  oled.print("  Says");
+  oled.display();
+ 
+  delay(3000);//pause for the splash screen
   //Note: You can change the spalsh screen by editing the array founf in the library source code
 }
 
