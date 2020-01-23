@@ -18,9 +18,10 @@ Compile code for hello_world (important, because it downloads and installs other
 
 `make -f tensorflow/lite/micro/tools/make/Makefile TARGET=sparkfun_edge hello_world_bin`
 
-Add Redboard Artemis ATP to Apollo Makefile:
+Add Redboard Artemis ATP as a valid target:
 
-* Add `sparkfun_redboard_artemis_atp\` to line 5 after `sparkfun_edge\`
+* In Makefile `/tensorflow/lite/micro/tools/make/targets/apollo3evb_makefile.inc`, add `sparkfun_redboard_artemis_atp\` after `sparkfun_edge\` (line 4)
+* In example project directory (eg: `/tensorflow/lite/micro/examples/hello_world/`), cp `sparkfun_edge` directory to `sparkfun_redboard_artemis_atp` and modify for new board (would use BSP at `/tensorflow/lite/micro/tools/make/downloads/AmbiqSuite-Rel2.2.0/boards_sfe/redboard_artemis/bsp/am_bsp.c`)
 
 Compile the actual code that we want to run:
 
