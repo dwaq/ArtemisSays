@@ -1,6 +1,6 @@
 ## Installation
 
-In WSL:
+**In WSL:**
 
 Download tensorflow:
 
@@ -12,7 +12,7 @@ Download Python dependencies:
 
 `pip3 install pycrypto pyserial --user`
 
-Compile code for hello_world (important, because it installs other tensorflow dependencies)
+Compile code for hello_world (important, because it downloads and installs other tensorflow dependencies)
 
 (might need to install unzip first: `sudo apt install unzip`)
 
