@@ -14,4 +14,6 @@ Download Python dependencies:
 
 Compile code for hello_world (important, because it installs other tensorflow dependencies)
 
+(might need to install unzip first: `sudo apt install unzip`)
+
 `make -f tensorflow/lite/micro/tools/make/Makefile TARGET=sparkfun_edge hello_world_bin`
