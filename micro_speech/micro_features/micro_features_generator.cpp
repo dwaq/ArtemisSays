@@ -13,12 +13,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "micro_features_micro_features_generator.h"
+#include "micro_features_generator.h"
 
 #include <cmath>
 #include <cstring>
 
-#include "micro_features_micro_model_settings.h"
+#include "micro_model_settings.h"
 #include "tensorflow/lite/experimental/microfrontend/lib/frontend.h"
 #include "tensorflow/lite/experimental/microfrontend/lib/frontend_util.h"
 

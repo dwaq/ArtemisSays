@@ -25,7 +25,7 @@ limitations under the License.
 #include "am_mcu_apollo.h"  // NOLINT
 #include "am_util.h"        // NOLINT
 
-#include "micro_features_micro_model_settings.h"
+#include "micro_features/micro_model_settings.h"
 
 namespace {
 

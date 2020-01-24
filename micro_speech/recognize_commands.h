@@ -19,7 +19,7 @@ limitations under the License.
 #include <cstdint>
 
 #include "tensorflow/lite/c/c_api_internal.h"
-#include "micro_features_micro_model_settings.h"
+#include "micro_features/micro_model_settings.h"
 #include "tensorflow/lite/experimental/micro/micro_error_reporter.h"
 
 // Partial implementation of std::dequeue, just providing the functionality

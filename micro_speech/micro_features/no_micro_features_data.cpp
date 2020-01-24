@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "micro_features_no_micro_features_data.h"
+#include "micro_features/no_micro_features_data.h"
 
 /* File automatically created by
  * tensorflow/examples/speech_commands/wav_to_features.py \

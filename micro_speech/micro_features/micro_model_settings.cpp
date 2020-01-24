@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "micro_features_micro_model_settings.h"
+#include "micro_features/micro_model_settings.h"
 
 const char* kCategoryLabels[kCategoryCount] = {
     "silence",

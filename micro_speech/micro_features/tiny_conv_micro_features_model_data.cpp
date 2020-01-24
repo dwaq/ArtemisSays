@@ -17,7 +17,7 @@ limitations under the License.
 // xxd -i tiny_conv.tflite > tiny_conv_simple_features_model_data.cc
 // See the README for a full description of the creation process.
 
-#include "micro_features_tiny_conv_micro_features_model_data.h"
+#include "micro_features/tiny_conv_micro_features_model_data.h"
 
 // We need to keep the data array aligned on some architectures.
 #ifdef __has_attribute

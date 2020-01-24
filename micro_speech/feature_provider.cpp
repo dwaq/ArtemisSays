@@ -16,8 +16,8 @@ limitations under the License.
 #include "feature_provider.h"
 
 #include "audio_provider.h"
-#include "micro_features_micro_features_generator.h"
-#include "micro_features_micro_model_settings.h"
+#include "micro_features/micro_features_generator.h"
+#include "micro_features/micro_model_settings.h"
 
 FeatureProvider::FeatureProvider(int feature_size, uint8_t* feature_data)
     : feature_size_(feature_size),
