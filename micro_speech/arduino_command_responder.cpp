@@ -17,6 +17,8 @@ limitations under the License.
 
 #include "am_bsp.h"  // NOLINT
 
+#include "display.h"
+
 #define AM_BSP_GPIO_LED_RED 28
 #define AM_BSP_GPIO_LED_YELLOW 23
 #define AM_BSP_GPIO_LED_GREEN 4
@@ -55,14 +57,18 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
     if (found_command[0] == 'y') {
       error_reporter->Report("\nYES");
       am_hal_gpio_output_set(AM_BSP_GPIO_LED_YELLOW);
+      displayYes();
+
     }
     if (found_command[0] == 'n') {
       error_reporter->Report("\nNO");
       am_hal_gpio_output_set(AM_BSP_GPIO_LED_RED);
+      displayNo();
     }
     if (found_command[0] == 'u') {
       error_reporter->Report("\nUNKNOWN");
       am_hal_gpio_output_set(AM_BSP_GPIO_LED_GREEN);
+      displayUnknown();
     }
   }
 }
