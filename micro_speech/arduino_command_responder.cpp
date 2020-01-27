@@ -57,18 +57,18 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
     if (found_command[0] == 'y') {
       error_reporter->Report("\nYES");
       am_hal_gpio_output_set(AM_BSP_GPIO_LED_YELLOW);
-      displayYes();
+      displayText("YES");
 
     }
     if (found_command[0] == 'n') {
       error_reporter->Report("\nNO");
       am_hal_gpio_output_set(AM_BSP_GPIO_LED_RED);
-      displayNo();
+      displayText("NO");
     }
     if (found_command[0] == 'u') {
       error_reporter->Report("\nUNKNOWN");
       am_hal_gpio_output_set(AM_BSP_GPIO_LED_GREEN);
-      displayUnknown();
+      displayText("UNKNOWN");
     }
   }
 }

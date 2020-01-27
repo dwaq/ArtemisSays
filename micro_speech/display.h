@@ -9,8 +9,6 @@ This sketch draws to the 64x48 pixel MicroOLED
 #define DISPLAY_H_
 
 void displaySplashScreen(void);
-void displayYes(void);
-void displayNo(void);
-void displayUnknown(void);
+void displayText(char text[]);
 
 #endif  // DISPLAY_H_

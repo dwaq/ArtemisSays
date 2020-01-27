@@ -49,27 +49,11 @@ void displaySplashScreen(void) {
     // Pause for the splash screen
     delay(3000);
 }
-void displayYes(void) {
-    // Display text
+void displayText(char text[]){
+   // Display text
       oled.setFontType(1);
       oled.clear(PAGE);
       oled.setCursor(0, 1);
-      oled.print("YES");
-      oled.display();
-}
-void displayNo(void){
-    // Display text
-      oled.setFontType(1);
-      oled.clear(PAGE);
-      oled.setCursor(0, 1);
-      oled.print("NO");
-      oled.display();
-}
-void displayUnknown(void){
-    // Display text
-      oled.setFontType(1);
-      oled.clear(PAGE);
-      oled.setCursor(0, 1);
-      oled.print("UNKNOWN");
+      oled.print(text);
       oled.display();
 }
