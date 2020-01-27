@@ -19,6 +19,16 @@ limitations under the License.
 
 #include "display.h"
 
+// Pins on the top right header (in order)
+#define UNKNOWN_LED 14
+#define YES_LED 8
+#define NO_LED 10
+#define UP_LED 9
+#define DOWN_LED 26 
+#define LEFT_LED 15
+#define RIGHT_LED 19
+#define GO_LED 18
+
 #define AM_BSP_GPIO_LED_RED 28
 #define AM_BSP_GPIO_LED_YELLOW 23
 #define AM_BSP_GPIO_LED_GREEN 4
@@ -31,10 +41,15 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
   static bool is_initialized = false;
   if (!is_initialized) {
     // Setup LED's as outputs
-    am_hal_gpio_pinconfig(AM_BSP_GPIO_LED_RED, g_AM_HAL_GPIO_OUTPUT_12);
     am_hal_gpio_pinconfig(AM_BSP_GPIO_LED_BLUE, g_AM_HAL_GPIO_OUTPUT_12);
-    am_hal_gpio_pinconfig(AM_BSP_GPIO_LED_GREEN, g_AM_HAL_GPIO_OUTPUT_12);
-    am_hal_gpio_pinconfig(AM_BSP_GPIO_LED_YELLOW, g_AM_HAL_GPIO_OUTPUT_12);
+    am_hal_gpio_pinconfig(UNKNOWN_LED, g_AM_HAL_GPIO_OUTPUT_12);
+    am_hal_gpio_pinconfig(YES_LED, g_AM_HAL_GPIO_OUTPUT_12);
+    am_hal_gpio_pinconfig(NO_LED, g_AM_HAL_GPIO_OUTPUT_12);
+    am_hal_gpio_pinconfig(UP_LED, g_AM_HAL_GPIO_OUTPUT_12);
+    am_hal_gpio_pinconfig(DOWN_LED, g_AM_HAL_GPIO_OUTPUT_12);
+    am_hal_gpio_pinconfig(LEFT_LED, g_AM_HAL_GPIO_OUTPUT_12);
+    am_hal_gpio_pinconfig(RIGHT_LED, g_AM_HAL_GPIO_OUTPUT_12);
+    am_hal_gpio_pinconfig(GO_LED, g_AM_HAL_GPIO_OUTPUT_12);
     is_initialized = true;
   }
   static int count = 0;
@@ -47,28 +62,57 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
     am_hal_gpio_output_clear(AM_BSP_GPIO_LED_BLUE);
   }
 
-  // Turn on the yellow LED if 'yes' was heard.
-  am_hal_gpio_output_clear(AM_BSP_GPIO_LED_RED);
-  am_hal_gpio_output_clear(AM_BSP_GPIO_LED_YELLOW);
-  am_hal_gpio_output_clear(AM_BSP_GPIO_LED_GREEN);
+  // Clear all LEDs, then turn the specific one on
+  am_hal_gpio_output_clear(UNKNOWN_LED);
+  am_hal_gpio_output_clear(YES_LED);
+  am_hal_gpio_output_clear(NO_LED);
+  am_hal_gpio_output_clear(UP_LED);
+  am_hal_gpio_output_clear(DOWN_LED);
+  am_hal_gpio_output_clear(LEFT_LED);
+  am_hal_gpio_output_clear(RIGHT_LED);
+  am_hal_gpio_output_clear(GO_LED);
   if (is_new_command) {
     error_reporter->Report("Heard %s (%d) @%dms", found_command, score,
                            current_time);
-    if (found_command[0] == 'y') {
-      error_reporter->Report("\nYES");
-      am_hal_gpio_output_set(AM_BSP_GPIO_LED_YELLOW);
-      displayText("YES");
-
+    if (found_command[1] == 'n') {
+      error_reporter->Report("\nUNKNOWN");
+      am_hal_gpio_output_set(UNKNOWN_LED);
+      displayText("UNKNOWN");
     }
-    if (found_command[0] == 'n') {
+    else if (found_command[0] == 'y') {
+      error_reporter->Report("\nYES");
+      am_hal_gpio_output_set(YES_LED);
+      displayText("YES");
+    }
+    else if (found_command[0] == 'n') {
       error_reporter->Report("\nNO");
-      am_hal_gpio_output_set(AM_BSP_GPIO_LED_RED);
+      am_hal_gpio_output_set(NO_LED);
       displayText("NO");
     }
-    if (found_command[0] == 'u') {
-      error_reporter->Report("\nUNKNOWN");
-      am_hal_gpio_output_set(AM_BSP_GPIO_LED_GREEN);
-      displayText("UNKNOWN");
+    else if (found_command[0] == 'u') {
+      error_reporter->Report("\nUP");
+      am_hal_gpio_output_set(UP_LED);
+      displayText("UP");
+    }
+    else if (found_command[0] == 'd') {
+      error_reporter->Report("\nDOWN");
+      am_hal_gpio_output_set(DOWN_LED);
+      displayText("DOWN");
+    }
+    else if (found_command[0] == 'l') {
+      error_reporter->Report("\nLEFT");
+      am_hal_gpio_output_set(LEFT_LED);
+      displayText("LEFT");
+    }
+    else if (found_command[0] == 'r') {
+      error_reporter->Report("\nRIGHT");
+      am_hal_gpio_output_set(RIGHT_LED);
+      displayText("RIGHT");
+    }
+    else if (found_command[0] == 'g') {
+      error_reporter->Report("\nGO");
+      am_hal_gpio_output_set(GO_LED);
+      displayText("GO");
     }
   }
 }
