@@ -20,4 +20,9 @@ const char* kCategoryLabels[kCategoryCount] = {
     "unknown",
     "yes",
     "no",
+    "up",
+    "down",
+    "left",
+    "right",
+    "go",
 };
