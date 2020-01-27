@@ -29,10 +29,6 @@ limitations under the License.
 #define RIGHT_LED 19
 #define GO_LED 18
 
-#define AM_BSP_GPIO_LED_RED 28
-#define AM_BSP_GPIO_LED_YELLOW 23
-#define AM_BSP_GPIO_LED_GREEN 4
-
 // This implementation will light up the LEDs on the board in response to
 // different commands.
 void RespondToCommand(tflite::ErrorReporter* error_reporter,
