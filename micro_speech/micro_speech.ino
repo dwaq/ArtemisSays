@@ -131,7 +131,8 @@ void setup() {
 
   previous_time = 0;
 
-  startup();
+  // set up OLED display and print project name on screen
+  displaySplashScreen();
 }
 
 // The name of this function is important for Arduino compatibility.
