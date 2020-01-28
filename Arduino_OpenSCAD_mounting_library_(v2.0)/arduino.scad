@@ -54,11 +54,12 @@ module bumper( boardType = UNO, mountingHoles = false ) {
 			//Base of bumper	
 			difference() {
 				boardShape(boardType = boardType, offset=1, height = bumperBaseHeight);
+				// remove this to fill in the base
 				translate([0,0, -0.1])
 					boardShape(boardType = boardType, offset=-2, height = bumperHeight + 0.2);
 			}
 
-			//Board mounting holes
+			//Board mounting tabs
 			holePlacement(boardType=boardType)
 				cylinder(r = mountingHoleRadius + 1.5, h = bumperBaseHeight, $fn = 32);
 
@@ -86,12 +87,17 @@ module bumper( boardType = UNO, mountingHoles = false ) {
 				}
 			}
 		}
+		// holes in the mounting tabs
 		translate([0,0,-0.5])
 		holePlacement(boardType=boardType)
 			cylinder(r = mountingHoleRadius, h = bumperHeight, $fn = 32);	
+		
+		// USB port and stuff:
 		translate([0, 0, bumperBaseHeight]) {
 			components(boardType = boardType, component = ALL, offset = 1);
 		}
+		
+		// IDK what these do
 		translate([4,(dimensions[1] - dimensions[1] * 0.4)/2,-1])
 			cube([dimensions[0] -8,dimensions[1] * 0.4,bumperBaseHeight + 2]);
 	}
