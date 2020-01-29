@@ -12,7 +12,7 @@ class ArtemisSays {
   public:
     // list of the states for the game
     enum GAME_STATES {
-      WAIT_FOR_GO = 0,
+      WAIT_TO_START = 0,
       START_GAME = 1,
       END_GAME = 2
     };
@@ -35,7 +35,7 @@ class ArtemisSays {
   private:
     // start at the beginning
     // TODO: do I need a state for the splash screen prior to this? 
-    enum GAME_STATES state = WAIT_FOR_GO;
+    enum GAME_STATES state = WAIT_TO_START;
 
     // store sequence
     DIRECTIONS sequence[MAX_MOVES];
