@@ -116,7 +116,8 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
     else if (found_command[0] == 'u') {
       error_reporter->Report("\nUP");
       am_hal_gpio_output_set(UP_LED);
-      displayText("UP");
+      //displayText("UP");
+      drawUp();
 
       // if game is started
       if (game.getState() == ArtemisSays::START_GAME) {
@@ -127,7 +128,8 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
     else if (found_command[0] == 'd') {
       error_reporter->Report("\nDOWN");
       am_hal_gpio_output_set(DOWN_LED);
-      displayText("DOWN");
+      //displayText("DOWN");
+      drawDown();
 
       // if game is started
       if (game.getState() == ArtemisSays::START_GAME) {
@@ -138,7 +140,8 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
     else if (found_command[0] == 'l') {
       error_reporter->Report("\nLEFT");
       am_hal_gpio_output_set(LEFT_LED);
-      displayText("LEFT");
+      //displayText("LEFT");
+      drawLeft();
 
       // if game is started
       if (game.getState() == ArtemisSays::START_GAME) {
@@ -149,7 +152,8 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
     else if (found_command[0] == 'r') {
       error_reporter->Report("\nRIGHT");
       am_hal_gpio_output_set(RIGHT_LED);
-      displayText("RIGHT");
+      //displayText("RIGHT");
+      drawRight();
 
       // if game is started
       if (game.getState() == ArtemisSays::START_GAME) {
