@@ -14,5 +14,6 @@ void drawUp(void);
 void drawRight(void);
 void drawDown(void);
 void drawLeft(void);
+void displayReplayScreen(void);
 
 #endif  // DISPLAY_H_

@@ -98,3 +98,14 @@ void drawLeft()
     oled.drawBitmap(leftImage);
     oled.display();
 }
+//---------------------------------------------------------------
+void displayReplayScreen(void) {
+    // Display replay text
+    oled.setFontType(0);
+    oled.clear(PAGE);
+    oled.setCursor(0, 0);
+    oled.print("You lost!");
+    oled.print("Play again?");
+    oled.print("Say \"yes\" or \"no\"");
+    oled.display();
+}

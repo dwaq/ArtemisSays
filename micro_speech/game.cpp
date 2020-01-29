@@ -67,7 +67,7 @@ void ArtemisSays::checkResponse(enum DIRECTIONS direction) {
   // incorrect thing said
   else {
     // show losing text
-    //displayReplayScreen();
+    displayReplayScreen();
 
     // wait to decide what's next
     state = END_GAME;
