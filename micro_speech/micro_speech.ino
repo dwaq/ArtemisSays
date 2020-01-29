@@ -131,6 +131,9 @@ void setup() {
 
   previous_time = 0;
 
+  // set up the random number generator
+  randomSeed(analogRead(0));
+
   // set up OLED display and print project name on screen
   displaySplashScreen();
 }

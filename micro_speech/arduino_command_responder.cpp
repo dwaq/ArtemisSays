@@ -36,7 +36,10 @@ ArtemisSays game;
 void startGame(void) {
   // if we're waiting to start the game
   if (game.getState() == ArtemisSays::WAIT_FOR_GO) {
-    // it has been said, so go to the next state
+    // it has been said, so make a first direction
+    game.setRandomDirection();
+
+    // go to the next state
     game.changeState(ArtemisSays::START_GAME);
   }
 }
