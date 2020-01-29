@@ -47,7 +47,7 @@ void displaySplashScreen(void) {
     oled.display();
 
     // Pause for the splash screen
-    delay(3000);
+    //delay(3000);
 }
 void displayText(char text[]){
    // Display text
