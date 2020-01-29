@@ -59,12 +59,14 @@ void displaySplashScreen(void) {
 }
 //---------------------------------------------------------------
 void displayText(const char* text){
-   // Display text
-      oled.setFontType(1);
-      oled.clear(PAGE);
-      oled.setCursor(0, 1);
-      oled.print(text);
-      oled.display();
+    // Display text
+    oled.setFontType(1);
+    oled.clear(PAGE);
+    oled.setCursor(0, 1);
+    oled.print(text);
+    oled.display();
+    // short delay for debugging
+    delay(500);
 }
 //---------------------------------------------------------------
 void drawUp()
