@@ -56,7 +56,7 @@ void displaySplashScreen(void) {
     oled.print("Say \"go\" to start");
     oled.display();
 }
-void displayText(char text[]){
+void displayText(const char* text){
    // Display text
       oled.setFontType(1);
       oled.clear(PAGE);
