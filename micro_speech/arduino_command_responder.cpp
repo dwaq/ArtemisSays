@@ -39,6 +39,9 @@ void startGame(void) {
     // it has been said, so make a first direction
     game.setRandomDirection();
 
+    // display it
+    game.displaySequence();
+
     // go to the next state
     game.changeState(ArtemisSays::START_GAME);
   }
