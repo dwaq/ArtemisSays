@@ -51,10 +51,12 @@ void displaySplashScreen(void) {
     delay(1000);
 
     // Display starting text
-    oled.setFontType(0);
+    oled.setFontType(1);
     oled.clear(PAGE);
     oled.setCursor(0, 0);
-    oled.print("Say \"go\" to start");
+    oled.print("  Say");
+    oled.print("  \"go\"");
+    oled.print("to  start");
     oled.display();
 }
 //---------------------------------------------------------------
