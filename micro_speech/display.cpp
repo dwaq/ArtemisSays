@@ -38,16 +38,23 @@ void displaySplashScreen(void) {
     // clear(PAGE) will clear the Arduino's display buffer
     oled.clear(ALL);
 
-    // Display text
+    // Display title text
     oled.setFontType(1);
     oled.clear(PAGE);
-    oled.setCursor(0, 1);
+    oled.setCursor(0, 0);
     oled.print("Artemis");
     oled.print("  Says");
     oled.display();
 
-    // Pause for the splash screen
-    //delay(3000);
+    // Pause for the title screen
+    delay(1000);
+
+    // Display starting text
+    oled.setFontType(0);
+    oled.clear(PAGE);
+    oled.setCursor(0, 0);
+    oled.print("Say \"go\" to start");
+    oled.display();
 }
 void displayText(char text[]){
    // Display text
