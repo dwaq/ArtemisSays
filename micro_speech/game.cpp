@@ -57,3 +57,11 @@ void ArtemisSays::displaySequence(void) {
     position++;
   }
 }
+
+void ArtemisSays::restartGame(void) {
+  // reset variables
+  level = 0;
+  moves = 0;
+
+  // TODO: call startGame() somehow
+}

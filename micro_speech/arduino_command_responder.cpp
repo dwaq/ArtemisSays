@@ -97,6 +97,12 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
       error_reporter->Report("\nYES");
       am_hal_gpio_output_set(YES_LED);
       displayText("YES");
+
+      // if game has ended
+      if (game.getState() == ArtemisSays::END_GAME) {
+        // restart the game
+        game.restartGame();
+      }
     }
     else if (found_command[0] == 'n') {
       error_reporter->Report("\nNO");

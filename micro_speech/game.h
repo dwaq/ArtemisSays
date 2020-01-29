@@ -13,7 +13,8 @@ class ArtemisSays {
     // list of the states for the game
     enum GAME_STATES {
       WAIT_FOR_GO = 0,
-      START_GAME = 1
+      START_GAME = 1,
+      END_GAME = 2
     };
 
     // list of directions that could be said
@@ -28,6 +29,7 @@ class ArtemisSays {
     void changeState(enum GAME_STATES newState);
     void setRandomDirection(void);
     void displaySequence(void);
+    void restartGame(void);
 
   private:
     // start at the beginning
