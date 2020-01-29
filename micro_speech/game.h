@@ -29,6 +29,7 @@ class ArtemisSays {
     void changeState(enum GAME_STATES newState);
     void setRandomDirection(void);
     void displaySequence(void);
+    void checkResponse(enum DIRECTIONS direction);
     void restartGame(void);
 
   private:

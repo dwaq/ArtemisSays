@@ -117,6 +117,11 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
       error_reporter->Report("\nUP");
       am_hal_gpio_output_set(UP_LED);
       displayText("UP");
+
+      // if game is started, check that the correct direction has been said
+      if (game.getState() == ArtemisSays::START_GAME) {
+        game.checkResponse(ArtemisSays::up);
+      }
     }
     else if (found_command[0] == 'd') {
       error_reporter->Report("\nDOWN");

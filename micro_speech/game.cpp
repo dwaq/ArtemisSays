@@ -58,6 +58,22 @@ void ArtemisSays::displaySequence(void) {
   }
 }
 
+void ArtemisSays::checkResponse(enum DIRECTIONS direction) {
+  // check that direction said matches the current move
+  if (direction == sequence[level]) {
+    // prepare for next level
+    ArtemisSays::setRandomDirection();
+  }
+  // incorrect thing said
+  else {
+    // show losing text
+    //displayReplayScreen();
+
+    // wait to decide what's next
+    state = END_GAME;
+  }
+}
+
 void ArtemisSays::restartGame(void) {
   // reset variables
   level = 0;
