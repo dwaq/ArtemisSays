@@ -18,6 +18,10 @@ limitations under the License.
 #include "am_bsp.h"  // NOLINT
 
 #include "display.h"
+#include "game.h"
+
+// class for the game state machine
+ArtemisSays game;
 
 // Pins on the top right header (in order)
 #define UNKNOWN_LED 14
@@ -28,6 +32,14 @@ limitations under the License.
 #define LEFT_LED 15
 #define RIGHT_LED 19
 #define GO_LED 18
+
+void startGame(void) {
+  // if we're waiting to start the game
+  if (game.getState() == ArtemisSays::WAIT_FOR_GO) {
+    // it has been said, so go to the next state
+    game.changeState(ArtemisSays::START_GAME);
+  }
+}
 
 // This implementation will light up the LEDs on the board in response to
 // different commands.
@@ -84,6 +96,10 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
       error_reporter->Report("\nNO");
       am_hal_gpio_output_set(NO_LED);
       displayText("NO");
+
+      // Sometimes "go" is interpreted as "no"
+      // so just let it work the same way
+      startGame();
     }
     else if (found_command[0] == 'u') {
       error_reporter->Report("\nUP");
@@ -109,6 +125,9 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
       error_reporter->Report("\nGO");
       am_hal_gpio_output_set(GO_LED);
       displayText("GO");
+
+      // "Go" has been said, so start the game
+      startGame();
     }
   }
 }
