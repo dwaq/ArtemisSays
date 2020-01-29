@@ -118,8 +118,9 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
       am_hal_gpio_output_set(UP_LED);
       displayText("UP");
 
-      // if game is started, check that the correct direction has been said
+      // if game is started
       if (game.getState() == ArtemisSays::START_GAME) {
+        // check that the correct direction has been said
         game.checkResponse(ArtemisSays::up);
       }
     }
@@ -127,16 +128,34 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
       error_reporter->Report("\nDOWN");
       am_hal_gpio_output_set(DOWN_LED);
       displayText("DOWN");
+
+      // if game is started
+      if (game.getState() == ArtemisSays::START_GAME) {
+        // check that the correct direction has been said
+        game.checkResponse(ArtemisSays::down);
+      }
     }
     else if (found_command[0] == 'l') {
       error_reporter->Report("\nLEFT");
       am_hal_gpio_output_set(LEFT_LED);
       displayText("LEFT");
+
+      // if game is started
+      if (game.getState() == ArtemisSays::START_GAME) {
+        // check that the correct direction has been said
+        game.checkResponse(ArtemisSays::left);
+      }
     }
     else if (found_command[0] == 'r') {
       error_reporter->Report("\nRIGHT");
       am_hal_gpio_output_set(RIGHT_LED);
       displayText("RIGHT");
+
+      // if game is started
+      if (game.getState() == ArtemisSays::START_GAME) {
+        // check that the correct direction has been said
+        game.checkResponse(ArtemisSays::right);
+      }
     }
     else if (found_command[0] == 'g') {
       error_reporter->Report("\nGO");
