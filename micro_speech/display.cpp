@@ -71,7 +71,7 @@ void drawUp()
 {
     oled.clear(ALL);
     oled.clear(PAGE);
-    oled.drawBitmap(up);
+    oled.drawBitmap(upImage);
     oled.display();
 }
 //---------------------------------------------------------------
@@ -79,7 +79,7 @@ void drawRight()
 {
     oled.clear(ALL);
     oled.clear(PAGE);
-    oled.drawBitmap(right);
+    oled.drawBitmap(rightImage);
     oled.display();
 }
 //---------------------------------------------------------------
@@ -87,7 +87,7 @@ void drawDown()
 {
     oled.clear(ALL);
     oled.clear(PAGE);
-    oled.drawBitmap(down);
+    oled.drawBitmap(downImage);
     oled.display();
 }
 //---------------------------------------------------------------
@@ -95,6 +95,6 @@ void drawLeft()
 {
     oled.clear(ALL);
     oled.clear(PAGE);
-    oled.drawBitmap(left);
+    oled.drawBitmap(leftImage);
     oled.display();
 }
