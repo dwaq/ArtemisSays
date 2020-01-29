@@ -60,9 +60,15 @@ void ArtemisSays::displaySequence(void) {
 
 void ArtemisSays::checkResponse(enum DIRECTIONS direction) {
   // check that direction said matches the current move
-  if (direction == sequence[level]) {
-    // prepare for next level
-    ArtemisSays::setRandomDirection();
+  if (direction == sequence[move]) {
+    // go to next move
+    move++;
+
+    // when all moves are complete, go to the next level
+    if (move == level) {
+      // prepare for next level
+      ArtemisSays::setRandomDirection();
+    }
   }
   // incorrect thing said
   else {
@@ -77,7 +83,7 @@ void ArtemisSays::checkResponse(enum DIRECTIONS direction) {
 void ArtemisSays::restartGame(void) {
   // reset variables
   level = 0;
-  moves = 0;
+  move = 0;
 
   // TODO: call startGame() somehow
 }

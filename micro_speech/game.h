@@ -42,7 +42,7 @@ class ArtemisSays {
     // the level you're on (or the number of moves available)
     int level = 0;
     // moves made so far
-    int moves = 0;
+    int move = 0;
 };
 
 #endif  // GAME_H_
