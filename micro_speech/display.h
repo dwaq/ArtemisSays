@@ -10,5 +10,9 @@ This sketch draws to the 64x48 pixel MicroOLED
 
 void displaySplashScreen(void);
 void displayText(const char* text);
+void drawUp(void);
+void drawRight(void);
+void drawDown(void);
+void drawLeft(void);
 
 #endif  // DISPLAY_H_

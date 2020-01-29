@@ -7,6 +7,7 @@ This sketch draws to the 64x48 pixel MicroOLED
 
 #include <Wire.h>
 #include <SFE_MicroOLED.h>
+#include "images.h"
 
 //////////////////////////
 // MicroOLED Definition //
@@ -56,6 +57,7 @@ void displaySplashScreen(void) {
     oled.print("Say \"go\" to start");
     oled.display();
 }
+//---------------------------------------------------------------
 void displayText(const char* text){
    // Display text
       oled.setFontType(1);
@@ -63,4 +65,36 @@ void displayText(const char* text){
       oled.setCursor(0, 1);
       oled.print(text);
       oled.display();
+}
+//---------------------------------------------------------------
+void drawUp()
+{
+    oled.clear(ALL);
+    oled.clear(PAGE);
+    oled.drawBitmap(up);
+    oled.display();
+}
+//---------------------------------------------------------------
+void drawRight()
+{
+    oled.clear(ALL);
+    oled.clear(PAGE);
+    oled.drawBitmap(right);
+    oled.display();
+}
+//---------------------------------------------------------------
+void drawDown()
+{
+    oled.clear(ALL);
+    oled.clear(PAGE);
+    oled.drawBitmap(down);
+    oled.display();
+}
+//---------------------------------------------------------------
+void drawLeft()
+{
+    oled.clear(ALL);
+    oled.clear(PAGE);
+    oled.drawBitmap(left);
+    oled.display();
 }

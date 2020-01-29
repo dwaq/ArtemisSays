@@ -27,6 +27,7 @@ class ArtemisSays {
     enum GAME_STATES getState(void);
     void changeState(enum GAME_STATES newState);
     void setRandomDirection(void);
+    void displaySequence(void);
 
   private:
     // start at the beginning
