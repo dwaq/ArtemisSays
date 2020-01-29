@@ -33,7 +33,7 @@ ArtemisSays game;
 #define RIGHT_LED 19
 #define GO_LED 18
 
-void startGame(void) {
+void startOrEndGame(void) {
   // if we're waiting to start the game
   if (game.getState() == ArtemisSays::WAIT_FOR_GO) {
     // it has been said, so make a first direction
@@ -44,6 +44,11 @@ void startGame(void) {
 
     // go to the next state
     game.changeState(ArtemisSays::START_GAME);
+  }
+  // going to end the game
+  else if (game.getState() == ArtemisSays::END_GAME) {
+    displayText("GOODBYE");
+    // TODO: Go into low power mode or something
   }
 }
 
@@ -111,7 +116,7 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
 
       // Sometimes "go" is interpreted as "no"
       // so just let it work the same way
-      startGame();
+      startOrEndGame();
     }
     else if (found_command[0] == 'u') {
       error_reporter->Report("\nUP");
@@ -166,8 +171,9 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
       am_hal_gpio_output_set(GO_LED);
       displayText("GO");
 
-      // "Go" has been said, so start the game
-      startGame();
+      // Sometimes "go" is interpreted as "no"
+      // so just let it work the same way
+      startOrEndGame();
     }
   }
 }
