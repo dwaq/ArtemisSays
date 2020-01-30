@@ -52,9 +52,9 @@ void ArtemisSays::restartGame(void) {
   // reset variables
   level = 0;
   move = 0;
-  state = WAIT_TO_START;
 
-  // TODO: call startGame() somehow
+  // move to the first level
+  ArtemisSays::nextLevel();
 }
 
 void ArtemisSays::endGame(void) {
