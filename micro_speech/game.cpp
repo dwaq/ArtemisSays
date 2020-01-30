@@ -63,7 +63,68 @@ void ArtemisSays::endGame(void) {
 
   // display final screen
   displayEndGame();
-  // TODO: Go into low power mode or something
+  
+  // go into low power mode - wake it up with the reset button
+  // based on code from Artemis Example: LowPower
+  // TODO: PDM microphones (2) - ~50.9uA should also be powered off
+#if defined(ARDUINO_SFE_EDGE2)
+  pinMode(ACCEL_VDD, OUTPUT);
+  digitalWrite(ACCEL_VDD, LOW);
+
+  pinMode(MIC_VDD, OUTPUT);
+  digitalWrite(MIC_VDD, LOW);
+
+  pinMode(CAMERA_VDD, OUTPUT);
+  digitalWrite(CAMERA_VDD, LOW);
+#endif
+
+  // Turn off ADC
+  power_adc_disable();
+
+  // Initialize for low power in the power control block
+  am_hal_pwrctrl_low_power_init();
+
+  // Stop the XTAL
+  am_hal_clkgen_control(AM_HAL_CLKGEN_CONTROL_XTAL_STOP, 0);
+
+  // Disable the RTC
+  am_hal_rtc_osc_disable();
+
+  // Disabling the debugger GPIOs saves about 1.2 uA total
+  am_hal_gpio_pinconfig(20 /* SWDCLK */, g_AM_HAL_GPIO_DISABLE);
+  am_hal_gpio_pinconfig(21 /* SWDIO */, g_AM_HAL_GPIO_DISABLE);
+
+  // These two GPIOs are critical: the TX/RX connections between the Artemis module and the CH340S on the Blackboard
+  // are prone to backfeeding each other. To stop this from happening, we must reconfigure those pins as GPIOs
+  // and then disable them completely.
+  am_hal_gpio_pinconfig(48 /* TXO-0 */, g_AM_HAL_GPIO_DISABLE);
+  am_hal_gpio_pinconfig(49 /* RXI-0 */, g_AM_HAL_GPIO_DISABLE);
+
+  // The default Arduino environment runs the System Timer (STIMER) off the 48 MHZ HFRC clock source.
+  // The HFRC appears to take over 60 uA when it is running, so this is a big source of extra
+  // current consumption in deep sleep.
+  // For systems that might want to use the STIMER to generate a periodic wakeup, it needs to be left running.
+  // However, it does not have to run at 48 MHz. If we reconfigure STIMER (system timer) to use the 32768 Hz
+  // XTAL clock source instead the measured deepsleep power drops by about 64 uA.
+  am_hal_stimer_config(AM_HAL_STIMER_CFG_CLEAR | AM_HAL_STIMER_CFG_FREEZE);
+
+  // This option selects 32768 Hz via crystal osc. This appears to cost about 0.1 uA versus selecting "no clock".
+  am_hal_stimer_config(AM_HAL_STIMER_XTAL_32KHZ);
+
+  // This option would be available to systems that don't care about passing time, but might be set
+  // to wake up on a GPIO transition interrupt.
+  // am_hal_stimer_config(AM_HAL_STIMER_NO_CLK);
+
+  // Turn OFF Flash1
+  if (am_hal_pwrctrl_memory_enable(AM_HAL_PWRCTRL_MEM_FLASH_512K))
+  {
+    while (1);
+  }
+
+  // Power down SRAM
+  PWRCTRL->MEMPWDINSLEEP_b.SRAMPWDSLP = PWRCTRL_MEMPWDINSLEEP_SRAMPWDSLP_ALLBUTLOWER32K;
+
+  am_hal_sysctrl_sleep(AM_HAL_SYSCTRL_SLEEP_DEEP);
 }
 
 void ArtemisSays::displayDirection(enum DIRECTIONS direction) {
