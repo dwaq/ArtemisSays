@@ -98,7 +98,7 @@ void ArtemisSays::displaySequence(void) {
   int position = 0;
 
   // let the player know that the computer is going
-  displayComputerTurn();
+  displayComputerTurn(level);
 
   // loop through each sequence
   while (position < level) {

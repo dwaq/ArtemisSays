@@ -126,11 +126,13 @@ void displayEndGame(void) {
     oled.display();
 }
 //---------------------------------------------------------------
-void displayComputerTurn(void) {
+void displayComputerTurn(int level) {
     // Display new turn text
     oled.setFontType(1);
     oled.clear(PAGE);
     oled.setCursor(0, 0);
+    oled.print("Level ");
+    oled.print(level, 10);
     oled.print(" Watch ");
     oled.print("closely");
     oled.display();
