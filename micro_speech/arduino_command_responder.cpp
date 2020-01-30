@@ -15,7 +15,7 @@ limitations under the License.
 
 #include "command_responder.h"
 
-#include "am_bsp.h"  // NOLINT
+#include <Arduino.h>
 
 #include "game.h"
 
@@ -55,15 +55,15 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
   static bool is_initialized = false;
   if (!is_initialized) {
     // Setup LED's as outputs
-    am_hal_gpio_pinconfig(AM_BSP_GPIO_LED_BLUE, g_AM_HAL_GPIO_OUTPUT_12);
-    am_hal_gpio_pinconfig(UNKNOWN_LED, g_AM_HAL_GPIO_OUTPUT_12);
-    am_hal_gpio_pinconfig(YES_LED, g_AM_HAL_GPIO_OUTPUT_12);
-    am_hal_gpio_pinconfig(NO_LED, g_AM_HAL_GPIO_OUTPUT_12);
-    am_hal_gpio_pinconfig(UP_LED, g_AM_HAL_GPIO_OUTPUT_12);
-    am_hal_gpio_pinconfig(DOWN_LED, g_AM_HAL_GPIO_OUTPUT_12);
-    am_hal_gpio_pinconfig(LEFT_LED, g_AM_HAL_GPIO_OUTPUT_12);
-    am_hal_gpio_pinconfig(RIGHT_LED, g_AM_HAL_GPIO_OUTPUT_12);
-    am_hal_gpio_pinconfig(GO_LED, g_AM_HAL_GPIO_OUTPUT_12);
+    pinMode(LED_BUILTIN, OUTPUT);
+    pinMode(UNKNOWN_LED, OUTPUT);
+    pinMode(YES_LED, OUTPUT);
+    pinMode(NO_LED, OUTPUT);
+    pinMode(UP_LED, OUTPUT);
+    pinMode(DOWN_LED, OUTPUT);
+    pinMode(LEFT_LED, OUTPUT);
+    pinMode(RIGHT_LED, OUTPUT);
+    pinMode(GO_LED, OUTPUT);
     is_initialized = true;
   }
   static int count = 0;
@@ -71,31 +71,31 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
   // Toggle the blue LED every time an inference is performed.
   ++count;
   if (count & 1) {
-    am_hal_gpio_output_set(AM_BSP_GPIO_LED_BLUE);
+    digitalWrite(LED_BUILTIN, HIGH);
   } else {
-    am_hal_gpio_output_clear(AM_BSP_GPIO_LED_BLUE);
+    digitalWrite(LED_BUILTIN, LOW);
   }
 
   // Clear all LEDs, then turn the specific one on
-  am_hal_gpio_output_clear(UNKNOWN_LED);
-  am_hal_gpio_output_clear(YES_LED);
-  am_hal_gpio_output_clear(NO_LED);
-  am_hal_gpio_output_clear(UP_LED);
-  am_hal_gpio_output_clear(DOWN_LED);
-  am_hal_gpio_output_clear(LEFT_LED);
-  am_hal_gpio_output_clear(RIGHT_LED);
-  am_hal_gpio_output_clear(GO_LED);
+  digitalWrite(UNKNOWN_LED, LOW);
+  digitalWrite(YES_LED, LOW);
+  digitalWrite(NO_LED, LOW);
+  digitalWrite(UP_LED, LOW);
+  digitalWrite(DOWN_LED, LOW);
+  digitalWrite(LEFT_LED, LOW);
+  digitalWrite(RIGHT_LED, LOW);
+  digitalWrite(GO_LED, LOW);
 
   if (is_new_command) {
     error_reporter->Report("Heard %s (%d) @%dms", found_command, score,
                            current_time);
     if (found_command[1] == 'n') {
       error_reporter->Report("\nUNKNOWN");
-      am_hal_gpio_output_set(UNKNOWN_LED);
+      digitalWrite(UNKNOWN_LED, HIGH);
     }
     else if (found_command[0] == 'y') {
       error_reporter->Report("\nYES");
-      am_hal_gpio_output_set(YES_LED);
+      digitalWrite(YES_LED, HIGH);
 
       // if game has ended
       if (game.getState() == ArtemisSays::END_GAME) {
@@ -105,7 +105,7 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
     }
     else if (found_command[0] == 'n') {
       error_reporter->Report("\nNO");
-      am_hal_gpio_output_set(NO_LED);
+      digitalWrite(NO_LED, HIGH);
 
       // Sometimes "go" is interpreted as "no"
       // so just let it work the same way
@@ -113,7 +113,7 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
     }
     else if (found_command[0] == 'u') {
       error_reporter->Report("\nUP");
-      am_hal_gpio_output_set(UP_LED);
+      digitalWrite(UP_LED, HIGH);
 
       // if game is started
       if (game.getState() == ArtemisSays::START_GAME) {
@@ -123,7 +123,7 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
     }
     else if (found_command[0] == 'd') {
       error_reporter->Report("\nDOWN");
-      am_hal_gpio_output_set(DOWN_LED);
+      digitalWrite(DOWN_LED, HIGH);
 
       // if game is started
       if (game.getState() == ArtemisSays::START_GAME) {
@@ -133,7 +133,7 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
     }
     else if (found_command[0] == 'l') {
       error_reporter->Report("\nLEFT");
-      am_hal_gpio_output_set(LEFT_LED);
+      digitalWrite(LEFT_LED, HIGH);
 
       // if game is started
       if (game.getState() == ArtemisSays::START_GAME) {
@@ -143,7 +143,7 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
     }
     else if (found_command[0] == 'r') {
       error_reporter->Report("\nRIGHT");
-      am_hal_gpio_output_set(RIGHT_LED);
+      digitalWrite(RIGHT_LED, HIGH);
 
       // if game is started
       if (game.getState() == ArtemisSays::START_GAME) {
@@ -153,7 +153,7 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
     }
     else if (found_command[0] == 'g') {
       error_reporter->Report("\nGO");
-      am_hal_gpio_output_set(GO_LED);
+      digitalWrite(GO_LED, HIGH);
 
       // Sometimes "go" is interpreted as "no"
       // so just let it work the same way
