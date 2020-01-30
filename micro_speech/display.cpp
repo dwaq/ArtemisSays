@@ -124,6 +124,7 @@ void displayEndGame(void) {
     oled.print("       ");
     oled.print("GOODBYE");
     oled.display();
+    delay(1000);
 }
 //---------------------------------------------------------------
 void displayComputerTurn(int level) {

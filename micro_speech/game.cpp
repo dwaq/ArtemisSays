@@ -61,6 +61,7 @@ void ArtemisSays::endGame(void) {
   // go into another state so voice commands stop working
   state = COMPLETE;
 
+  // display final screen
   displayEndGame();
   // TODO: Go into low power mode or something
 }
