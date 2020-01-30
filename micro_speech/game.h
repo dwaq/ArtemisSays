@@ -14,7 +14,8 @@ class ArtemisSays {
     enum GAME_STATES {
       WAIT_TO_START = 0,
       START_GAME = 1,
-      END_GAME = 2
+      END_GAME = 2,
+      COMPLETE = 3
     };
 
     // list of directions that could be said

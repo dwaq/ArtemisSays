@@ -105,6 +105,9 @@ void ArtemisSays::restartGame(void) {
 }
 
 void ArtemisSays::endGame(void) {
+  // go into another state so voice commands stop working
+  state = COMPLETE;
+
   displayEndGame();
   // TODO: Go into low power mode or something
 }
