@@ -35,6 +35,8 @@ class ArtemisSays {
     void endGame(void);
 
   private:
+    void displayDirection(enum DIRECTIONS direction);
+
     // start at the beginning
     // TODO: do I need a state for the splash screen prior to this? 
     enum GAME_STATES state = WAIT_TO_START;

@@ -27,39 +27,7 @@ void ArtemisSays::setRandomDirection(void) {
   level++;
 }
 
-void ArtemisSays::displaySequence(void) {
-  int position = 0;
-
-  // loop through each sequence
-  while (position < level) {
-    // get this position's direction
-    enum DIRECTIONS direction = sequence[position];
-
-    // draw that position
-    if (direction == right) {
-      drawRight();
-    }
-    else if (direction == left) {
-      drawLeft();
-    }
-    else if (direction == down) {
-      drawDown();
-    }
-    else if (direction == up) {
-      drawUp();
-    }
-
-    // delay a bit
-    // TODO: what is the actual game's delay time?
-    delay(500);
-
-    // go to next position
-    position++;
-  }
-}
-
-void ArtemisSays::checkResponse(enum DIRECTIONS direction) {
-  // draw the shape to match the direction said
+void ArtemisSays::displayDirection(enum DIRECTIONS direction) {
   switch (direction) {
     case right:
       drawRight();
@@ -74,6 +42,31 @@ void ArtemisSays::checkResponse(enum DIRECTIONS direction) {
       drawUp();
       break;
   }
+}
+
+void ArtemisSays::displaySequence(void) {
+  int position = 0;
+
+  // loop through each sequence
+  while (position < level) {
+    // get this position's direction
+    enum DIRECTIONS direction = sequence[position];
+
+    // draw that position
+    displayDirection(direction);
+
+    // delay a bit
+    // TODO: what is the actual game's delay time?
+    delay(500);
+
+    // go to next position
+    position++;
+  }
+}
+
+void ArtemisSays::checkResponse(enum DIRECTIONS direction) {
+  // draw the shape to match the direction said
+  displayDirection(direction);
 
   // check that direction said matches the current move
   if (direction == sequence[move]) {
