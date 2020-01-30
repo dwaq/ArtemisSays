@@ -115,3 +115,13 @@ void displayReplayScreen(void) {
     oled.print("Say \"yes\"  or \"no\"");
     oled.display();
 }
+//---------------------------------------------------------------
+void displayEndGame(void) {
+      // Display ending text
+    oled.setFontType(1);
+    oled.clear(PAGE);
+    oled.setCursor(0, 0);
+    oled.print("       ");
+    oled.print("GOODBYE");
+    oled.display();
+}

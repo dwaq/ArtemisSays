@@ -103,3 +103,8 @@ void ArtemisSays::restartGame(void) {
 
   // TODO: call startGame() somehow
 }
+
+void ArtemisSays::endGame(void) {
+  displayEndGame();
+  // TODO: Go into low power mode or something
+}

@@ -17,7 +17,6 @@ limitations under the License.
 
 #include "am_bsp.h"  // NOLINT
 
-#include "display.h"
 #include "game.h"
 
 // class for the game state machine
@@ -47,9 +46,7 @@ void startOrEndGame(void) {
   }
   // going to end the game
   else if (game.getState() == ArtemisSays::END_GAME) {
-    // TODO: add formatting, it just appears on the first line now
-    displayText("GOODBYE");
-    // TODO: Go into low power mode or something
+    game.endGame();
   }
 }
 
@@ -91,18 +88,17 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
   am_hal_gpio_output_clear(LEFT_LED);
   am_hal_gpio_output_clear(RIGHT_LED);
   am_hal_gpio_output_clear(GO_LED);
+
   if (is_new_command) {
     error_reporter->Report("Heard %s (%d) @%dms", found_command, score,
                            current_time);
     if (found_command[1] == 'n') {
       error_reporter->Report("\nUNKNOWN");
       am_hal_gpio_output_set(UNKNOWN_LED);
-      displayText("UNKNOWN");
     }
     else if (found_command[0] == 'y') {
       error_reporter->Report("\nYES");
       am_hal_gpio_output_set(YES_LED);
-      displayText("YES");
 
       // if game has ended
       if (game.getState() == ArtemisSays::END_GAME) {
@@ -113,7 +109,6 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
     else if (found_command[0] == 'n') {
       error_reporter->Report("\nNO");
       am_hal_gpio_output_set(NO_LED);
-      displayText("NO");
 
       // Sometimes "go" is interpreted as "no"
       // so just let it work the same way
@@ -122,7 +117,6 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
     else if (found_command[0] == 'u') {
       error_reporter->Report("\nUP");
       am_hal_gpio_output_set(UP_LED);
-      //displayText("UP");
 
       // if game is started
       if (game.getState() == ArtemisSays::START_GAME) {
@@ -133,7 +127,6 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
     else if (found_command[0] == 'd') {
       error_reporter->Report("\nDOWN");
       am_hal_gpio_output_set(DOWN_LED);
-      //displayText("DOWN");
 
       // if game is started
       if (game.getState() == ArtemisSays::START_GAME) {
@@ -144,7 +137,6 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
     else if (found_command[0] == 'l') {
       error_reporter->Report("\nLEFT");
       am_hal_gpio_output_set(LEFT_LED);
-      //displayText("LEFT");
 
       // if game is started
       if (game.getState() == ArtemisSays::START_GAME) {
@@ -155,7 +147,6 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
     else if (found_command[0] == 'r') {
       error_reporter->Report("\nRIGHT");
       am_hal_gpio_output_set(RIGHT_LED);
-      //displayText("RIGHT");
 
       // if game is started
       if (game.getState() == ArtemisSays::START_GAME) {
@@ -166,7 +157,6 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
     else if (found_command[0] == 'g') {
       error_reporter->Report("\nGO");
       am_hal_gpio_output_set(GO_LED);
-      displayText("GO");
 
       // Sometimes "go" is interpreted as "no"
       // so just let it work the same way

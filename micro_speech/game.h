@@ -31,6 +31,7 @@ class ArtemisSays {
     void displaySequence(void);
     void checkResponse(enum DIRECTIONS direction);
     void restartGame(void);
+    void endGame(void);
 
   private:
     // start at the beginning
