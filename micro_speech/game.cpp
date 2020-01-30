@@ -11,11 +11,6 @@ enum ArtemisSays::GAME_STATES ArtemisSays::getState(void) {
   return state;
 }
 
-// change the state
-void ArtemisSays::changeState(enum GAME_STATES newState) {
-  state = newState;
-}
-
 void ArtemisSays::checkResponse(enum DIRECTIONS direction) {
   // draw the shape to match the direction said
   displayDirection(direction);
@@ -48,12 +43,16 @@ void ArtemisSays::nextLevel(void) {
 
   // display the upcoming sequence
   ArtemisSays::displaySequence();
+
+  // start the game
+  state = START_GAME;
 }
 
 void ArtemisSays::restartGame(void) {
   // reset variables
   level = 0;
   move = 0;
+  state = WAIT_TO_START;
 
   // TODO: call startGame() somehow
 }

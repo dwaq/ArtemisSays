@@ -27,7 +27,6 @@ class ArtemisSays {
     };
 
     enum GAME_STATES getState(void);
-    void changeState(enum GAME_STATES newState);
     void checkResponse(enum DIRECTIONS direction);
     void nextLevel(void);
     void restartGame(void);
