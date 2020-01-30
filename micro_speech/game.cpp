@@ -16,15 +16,54 @@ void ArtemisSays::changeState(enum GAME_STATES newState) {
   state = newState;
 }
 
-void ArtemisSays::setRandomDirection(void) {
-  // get a random direction
-  enum DIRECTIONS direction = (DIRECTIONS) random(1, 5);
+void ArtemisSays::checkResponse(enum DIRECTIONS direction) {
+  // draw the shape to match the direction said
+  displayDirection(direction);
 
-  // set the direction into the sequence
-  sequence[level] = direction;
+  // check that direction said matches the current move
+  if (direction == sequence[move]) {
+    // go to next move
+    move++;
 
-  // increase level
-  level++;
+    // when all moves are complete, go to the next level
+    if (move == level) {
+      // prepare for next level
+      ArtemisSays::nextLevel();
+    }
+  }
+  // incorrect thing said
+  else {
+    // show losing text
+    displayReplayScreen();
+
+    // wait to decide what's next
+    state = END_GAME;
+  }
+}
+
+// set up the next level
+void ArtemisSays::nextLevel(void) {
+  // set a next direction
+  ArtemisSays::setRandomDirection();
+
+  // display the upcoming sequence
+  ArtemisSays::displaySequence();
+}
+
+void ArtemisSays::restartGame(void) {
+  // reset variables
+  level = 0;
+  move = 0;
+
+  // TODO: call startGame() somehow
+}
+
+void ArtemisSays::endGame(void) {
+  // go into another state so voice commands stop working
+  state = COMPLETE;
+
+  displayEndGame();
+  // TODO: Go into low power mode or something
 }
 
 void ArtemisSays::displayDirection(enum DIRECTIONS direction) {
@@ -44,8 +83,22 @@ void ArtemisSays::displayDirection(enum DIRECTIONS direction) {
   }
 }
 
+void ArtemisSays::setRandomDirection(void) {
+  // get a random direction
+  enum DIRECTIONS direction = (DIRECTIONS) random(1, 5);
+
+  // set the direction into the sequence
+  sequence[level] = direction;
+
+  // increase level
+  level++;
+}
+
 void ArtemisSays::displaySequence(void) {
   int position = 0;
+
+  // let the player know that the computer is going
+  displayComputerTurn();
 
   // loop through each sequence
   while (position < level) {
@@ -62,48 +115,7 @@ void ArtemisSays::displaySequence(void) {
     // go to next position
     position++;
   }
-}
 
-void ArtemisSays::checkResponse(enum DIRECTIONS direction) {
-  // draw the shape to match the direction said
-  displayDirection(direction);
-
-  // check that direction said matches the current move
-  if (direction == sequence[move]) {
-    // go to next move
-    move++;
-
-    // when all moves are complete, go to the next level
-    if (move == level) {
-      // prepare for next level
-      ArtemisSays::setRandomDirection();
-
-      // let the player know it is their turn
-      displayYourTurn();
-    }
-  }
-  // incorrect thing said
-  else {
-    // show losing text
-    displayReplayScreen();
-
-    // wait to decide what's next
-    state = END_GAME;
-  }
-}
-
-void ArtemisSays::restartGame(void) {
-  // reset variables
-  level = 0;
-  move = 0;
-
-  // TODO: call startGame() somehow
-}
-
-void ArtemisSays::endGame(void) {
-  // go into another state so voice commands stop working
-  state = COMPLETE;
-
-  displayEndGame();
-  // TODO: Go into low power mode or something
+  // let the player know it is their turn
+  displayYourTurn();
 }

@@ -28,14 +28,15 @@ class ArtemisSays {
 
     enum GAME_STATES getState(void);
     void changeState(enum GAME_STATES newState);
-    void setRandomDirection(void);
-    void displaySequence(void);
     void checkResponse(enum DIRECTIONS direction);
+    void nextLevel(void);
     void restartGame(void);
     void endGame(void);
 
   private:
     void displayDirection(enum DIRECTIONS direction);
+    void setRandomDirection(void);
+    void displaySequence(void);
 
     // start at the beginning
     // TODO: do I need a state for the splash screen prior to this? 

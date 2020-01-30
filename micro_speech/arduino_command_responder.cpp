@@ -35,11 +35,8 @@ ArtemisSays game;
 void startOrEndGame(void) {
   // if we're waiting to start the game
   if (game.getState() == ArtemisSays::WAIT_TO_START) {
-    // it has been said, so make a first direction
-    game.setRandomDirection();
-
-    // display it
-    game.displaySequence();
+    // it has been said, so move to the next level
+    game.nextLevel();
 
     // go to the next state
     game.changeState(ArtemisSays::START_GAME);

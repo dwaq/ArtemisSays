@@ -126,6 +126,17 @@ void displayEndGame(void) {
     oled.display();
 }
 //---------------------------------------------------------------
+void displayComputerTurn(void) {
+    // Display new turn text
+    oled.setFontType(1);
+    oled.clear(PAGE);
+    oled.setCursor(0, 0);
+    oled.print(" Watch ");
+    oled.print("closely");
+    oled.display();
+    delay(500);
+}
+//---------------------------------------------------------------
 void displayYourTurn(void) {
     // Display new turn text
     oled.setFontType(1);
