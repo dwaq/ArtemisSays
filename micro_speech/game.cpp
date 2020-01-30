@@ -59,6 +59,22 @@ void ArtemisSays::displaySequence(void) {
 }
 
 void ArtemisSays::checkResponse(enum DIRECTIONS direction) {
+  // draw the shape to match the direction said
+  switch (direction) {
+    case right:
+      drawRight();
+      break;
+    case left:
+      drawLeft();
+      break;
+    case down:
+      drawDown();
+      break;
+    case up:
+      drawUp();
+      break;
+  }
+
   // check that direction said matches the current move
   if (direction == sequence[move]) {
     // go to next move
