@@ -47,6 +47,7 @@ void startOrEndGame(void) {
   }
   // going to end the game
   else if (game.getState() == ArtemisSays::END_GAME) {
+    // TODO: add formatting, it just appears on the first line now
     displayText("GOODBYE");
     // TODO: Go into low power mode or something
   }

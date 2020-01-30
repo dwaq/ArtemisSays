@@ -56,7 +56,7 @@ void displaySplashScreen(void) {
     oled.setCursor(0, 0);
     oled.print("  Say");
     oled.print("  \"go\"");
-    oled.print("to  start");
+    oled.print("to  start!");
     oled.display();
 }
 //---------------------------------------------------------------
@@ -108,8 +108,10 @@ void displayReplayScreen(void) {
     oled.setFontType(0);
     oled.clear(PAGE);
     oled.setCursor(0, 0);
-    oled.print("You lost!");
-    oled.print("Play again?");
-    oled.print("Say \"yes\" or \"no\"");
+    oled.print("You lost! ");
+    oled.print("          ");
+    oled.print("Go again? ");
+    oled.print("          ");
+    oled.print("Say \"yes\"  or \"no\"");
     oled.display();
 }
