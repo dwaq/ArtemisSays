@@ -125,3 +125,14 @@ void displayEndGame(void) {
     oled.print("GOODBYE");
     oled.display();
 }
+//---------------------------------------------------------------
+void displayYourTurn(void) {
+    // Display new turn text
+    oled.setFontType(1);
+    oled.clear(PAGE);
+    oled.setCursor(0, 0);
+    oled.print(" Your  ");
+    oled.print("  turn!");
+    oled.display();
+    delay(500);
+}

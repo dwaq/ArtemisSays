@@ -84,6 +84,9 @@ void ArtemisSays::checkResponse(enum DIRECTIONS direction) {
     if (move == level) {
       // prepare for next level
       ArtemisSays::setRandomDirection();
+
+      // let the player know it is their turn
+      displayYourTurn();
     }
   }
   // incorrect thing said

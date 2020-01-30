@@ -16,5 +16,6 @@ void drawDown(void);
 void drawLeft(void);
 void displayReplayScreen(void);
 void displayEndGame(void);
+void displayYourTurn(void);
 
 #endif  // DISPLAY_H_
