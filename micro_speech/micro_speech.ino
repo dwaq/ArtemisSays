@@ -133,7 +133,9 @@ void setup() {
 
   // set up the random number generator
   analogReadResolution(14);
-  randomSeed(analogRead(A13));
+  int noise = analogRead(A13); 
+  error_reporter->Report("Noise from pin A13: %d", noise);
+  randomSeed(noise);
 
   // set up OLED display and print project name on screen
   displaySplashScreen();
