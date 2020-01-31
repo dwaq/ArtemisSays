@@ -566,7 +566,7 @@ megaComponents = [
 	[[49.53, 72.39, 0], [headerWidth, headerWidth * 8, headerHeight], [0, 0, 1], HEADER_F, "Black"],
 	[[1.27, 92.71, 0], [headerWidth * 18, headerWidth * 2, headerHeight], [0, 0, 1], HEADER_F, "Black"],
 	[[9.34, -1.8, -2],[12, 16, 8],[0, -1, 0], USB, "LightGray"],
-	[[40.7, -1.8, 0], [9.0, 13.2, 10.9], [0, -1, 0], POWER, "Black" ]
+	[[40.7, -1.8, 0], [4, 12, 10.9], [0, -1, 0], POWER, "Black" ]
 	];
 
 mega2560Components = [
