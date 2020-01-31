@@ -26,6 +26,8 @@ This sketch draws to the 64x48 pixel MicroOLED
 // I2C will result in a very slow update rate
 MicroOLED oled(PIN_RESET, DC_JUMPER);
 
+#define IMAGE_DELAY 750
+
 void displaySplashScreen(void) {
     delay(100);
   
@@ -48,7 +50,7 @@ void displaySplashScreen(void) {
     oled.display();
 
     // Pause for the title screen
-    delay(1000);
+    delay(IMAGE_DELAY);
 
     // Display starting text
     oled.setFontType(1);
@@ -77,6 +79,7 @@ void drawUp()
     oled.clear(PAGE);
     oled.drawBitmap(upImage);
     oled.display();
+    delay(IMAGE_DELAY);
 }
 //---------------------------------------------------------------
 void drawRight()
@@ -85,6 +88,7 @@ void drawRight()
     oled.clear(PAGE);
     oled.drawBitmap(rightImage);
     oled.display();
+    delay(IMAGE_DELAY);
 }
 //---------------------------------------------------------------
 void drawDown()
@@ -93,6 +97,7 @@ void drawDown()
     oled.clear(PAGE);
     oled.drawBitmap(downImage);
     oled.display();
+    delay(IMAGE_DELAY);
 }
 //---------------------------------------------------------------
 void drawLeft()
@@ -101,6 +106,7 @@ void drawLeft()
     oled.clear(PAGE);
     oled.drawBitmap(leftImage);
     oled.display();
+    delay(IMAGE_DELAY);
 }
 //---------------------------------------------------------------
 void displayReplayScreen(void) {
@@ -124,7 +130,7 @@ void displayEndGame(void) {
     oled.print("       ");
     oled.print("GOODBYE");
     oled.display();
-    delay(1000);
+    delay(IMAGE_DELAY);
 }
 //---------------------------------------------------------------
 void displayComputerTurn(int level) {
@@ -137,7 +143,7 @@ void displayComputerTurn(int level) {
     oled.print(" Watch ");
     oled.print("closely");
     oled.display();
-    delay(500);
+    delay(IMAGE_DELAY);
 }
 //---------------------------------------------------------------
 void displayYourTurn(void) {
@@ -148,5 +154,9 @@ void displayYourTurn(void) {
     oled.print(" Your  ");
     oled.print("  turn!");
     oled.display();
-    delay(500);
+    delay(IMAGE_DELAY);
+
+    // then clear screen to show that a move can be said
+    oled.clear(PAGE);
+    oled.display();
 }

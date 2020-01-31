@@ -169,10 +169,6 @@ void ArtemisSays::displaySequence(void) {
     // draw that position
     displayDirection(direction);
 
-    // delay a bit
-    // TODO: what is the actual game's delay time?
-    delay(500);
-
     // go to next position
     position++;
   }
