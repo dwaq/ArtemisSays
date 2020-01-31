@@ -76,7 +76,6 @@ void displayText(const char* text){
 //---------------------------------------------------------------
 void drawUp()
 {
-    oled.clear(ALL);
     oled.clear(PAGE);
     oled.drawBitmap(upImage);
     oled.display();
@@ -84,7 +83,6 @@ void drawUp()
 //---------------------------------------------------------------
 void drawRight()
 {
-    oled.clear(ALL);
     oled.clear(PAGE);
     oled.drawBitmap(rightImage);
     oled.display();
@@ -92,7 +90,6 @@ void drawRight()
 //---------------------------------------------------------------
 void drawDown()
 {
-    oled.clear(ALL);
     oled.clear(PAGE);
     oled.drawBitmap(downImage);
     oled.display();
@@ -100,7 +97,6 @@ void drawDown()
 //---------------------------------------------------------------
 void drawLeft()
 {
-    oled.clear(ALL);
     oled.clear(PAGE);
     oled.drawBitmap(leftImage);
     oled.display();
