@@ -87,11 +87,11 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
     error_reporter->Report("Heard %s (%d) @%dms", found_command, score,
                            current_time);
     if (found_command[1] == 'n') {
-      error_reporter->Report("\nUNKNOWN");
+      //error_reporter->Report("\nUNKNOWN");
       digitalWrite(UNKNOWN_LED, HIGH);
     }
     else if (found_command[0] == 'y') {
-      error_reporter->Report("\nYES");
+      //error_reporter->Report("\nYES");
       digitalWrite(YES_LED, HIGH);
 
       // if game has ended
@@ -101,7 +101,7 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
       }
     }
     else if (found_command[0] == 'n') {
-      error_reporter->Report("\nNO");
+      //error_reporter->Report("\nNO");
       digitalWrite(NO_LED, HIGH);
 
       // Sometimes "go" is interpreted as "no"
@@ -109,7 +109,7 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
       startOrEndGame();
     }
     else if (found_command[0] == 'u') {
-      error_reporter->Report("\nUP");
+      //error_reporter->Report("\nUP");
       digitalWrite(UP_LED, HIGH);
 
       // if game is started
@@ -119,7 +119,7 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
       }
     }
     else if (found_command[0] == 'd') {
-      error_reporter->Report("\nDOWN");
+      //error_reporter->Report("\nDOWN");
       digitalWrite(DOWN_LED, HIGH);
 
       // if game is started
@@ -129,7 +129,7 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
       }
     }
     else if (found_command[0] == 'l') {
-      error_reporter->Report("\nLEFT");
+      //error_reporter->Report("\nLEFT");
       digitalWrite(LEFT_LED, HIGH);
 
       // if game is started
@@ -139,7 +139,7 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
       }
     }
     else if (found_command[0] == 'r') {
-      error_reporter->Report("\nRIGHT");
+      //error_reporter->Report("\nRIGHT");
       digitalWrite(RIGHT_LED, HIGH);
 
       // if game is started
@@ -149,7 +149,7 @@ void RespondToCommand(tflite::ErrorReporter* error_reporter,
       }
     }
     else if (found_command[0] == 'g') {
-      error_reporter->Report("\nGO");
+      //error_reporter->Report("\nGO");
       digitalWrite(GO_LED, HIGH);
 
       // Sometimes "go" is interpreted as "no"
