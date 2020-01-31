@@ -44,14 +44,16 @@ void ArtemisSays::nextLevel(void) {
   // display the upcoming sequence
   ArtemisSays::displaySequence();
 
+  // go back to the player's first move
+  move = 0;
+
   // start the game
   state = START_GAME;
 }
 
 void ArtemisSays::restartGame(void) {
-  // reset variables
+  // restart at the beginning
   level = 0;
-  move = 0;
 
   // move to the first level
   ArtemisSays::nextLevel();
