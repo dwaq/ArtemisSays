@@ -153,16 +153,16 @@ void ArtemisSays::displayDirection(enum DIRECTIONS direction) {
       tone(AUDIO_PIN, RIGHT_FREQ, DIRECTION_DELAY);
       break;
     case left:
-      tone(AUDIO_PIN, LEFT_FREQ, DIRECTION_DELAY);
       drawLeft();
+      tone(AUDIO_PIN, LEFT_FREQ, DIRECTION_DELAY);
       break;
     case down:
-      tone(AUDIO_PIN, DOWN_FREQ, DIRECTION_DELAY);
       drawDown();
+      tone(AUDIO_PIN, DOWN_FREQ, DIRECTION_DELAY);
       break;
     case up:
-      tone(AUDIO_PIN, UP_FREQ, DIRECTION_DELAY);
       drawUp();
+      tone(AUDIO_PIN, UP_FREQ, DIRECTION_DELAY);
       break;
   }
 
