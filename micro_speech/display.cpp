@@ -137,7 +137,14 @@ void displayComputerTurn(int level) {
     oled.setFontType(1);
     oled.clear(PAGE);
     oled.setCursor(0, 0);
-    oled.print("Level ");
+    // single digit levels fit
+    if (level < 10) {
+        oled.print("Level ");
+    }
+    // shorten level to fit with double digits
+    else {
+        oled.print("Lvl  ");
+    }
     oled.print(level, 10);
     oled.print(" Watch ");
     oled.print("closely");
