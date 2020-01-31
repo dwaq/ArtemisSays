@@ -112,7 +112,7 @@ void displayReplayScreen(void) {
     oled.setFontType(0);
     oled.clear(PAGE);
     oled.setCursor(0, 0);
-    oled.print("You lost! ");
+    oled.print(" You lost! ");
     oled.print("          ");
     oled.print("Go again? ");
     oled.print("          ");
