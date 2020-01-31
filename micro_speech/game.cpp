@@ -6,6 +6,18 @@ This library handles the state machine for the game
 #include "display.h"
 #include <Arduino.h>
 
+// constants for playing audio to match the direction
+#define AUDIO_PIN 18
+
+// sounds similar to the real Simon game
+#define UP_FREQ     1030 // A
+#define RIGHT_FREQ  588  // E (octave lower)
+#define DOWN_FREQ   1450 // C#
+#define LEFT_FREQ  1140 // E
+
+// same delay as the real Simon game
+#define DIRECTION_DELAY 350
+
 // get the state
 enum ArtemisSays::GAME_STATES ArtemisSays::getState(void) {
   return state;
@@ -132,24 +144,29 @@ void ArtemisSays::endGame(void) {
   am_hal_sysctrl_sleep(AM_HAL_SYSCTRL_SLEEP_DEEP);
 }
 
+// display the direction and play the cooresponding sound
+// for an accurate amount of time
 void ArtemisSays::displayDirection(enum DIRECTIONS direction) {
   switch (direction) {
     case right:
       drawRight();
+      tone(AUDIO_PIN, RIGHT_FREQ, DIRECTION_DELAY);
       break;
     case left:
+      tone(AUDIO_PIN, LEFT_FREQ, DIRECTION_DELAY);
       drawLeft();
       break;
     case down:
+      tone(AUDIO_PIN, DOWN_FREQ, DIRECTION_DELAY);
       drawDown();
       break;
     case up:
+      tone(AUDIO_PIN, UP_FREQ, DIRECTION_DELAY);
       drawUp();
       break;
   }
 
-  // same delay as the real Simon game
-  delay(350);
+  delay(DIRECTION_DELAY);
 }
 
 void ArtemisSays::setRandomDirection(void) {
