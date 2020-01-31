@@ -144,6 +144,9 @@ void ArtemisSays::displayDirection(enum DIRECTIONS direction) {
       drawUp();
       break;
   }
+
+  // same delay as the real Simon game
+  delay(350);
 }
 
 void ArtemisSays::setRandomDirection(void) {

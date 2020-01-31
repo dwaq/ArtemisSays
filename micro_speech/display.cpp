@@ -79,7 +79,6 @@ void drawUp()
     oled.clear(PAGE);
     oled.drawBitmap(upImage);
     oled.display();
-    delay(IMAGE_DELAY);
 }
 //---------------------------------------------------------------
 void drawRight()
@@ -88,7 +87,6 @@ void drawRight()
     oled.clear(PAGE);
     oled.drawBitmap(rightImage);
     oled.display();
-    delay(IMAGE_DELAY);
 }
 //---------------------------------------------------------------
 void drawDown()
@@ -97,7 +95,6 @@ void drawDown()
     oled.clear(PAGE);
     oled.drawBitmap(downImage);
     oled.display();
-    delay(IMAGE_DELAY);
 }
 //---------------------------------------------------------------
 void drawLeft()
@@ -106,7 +103,6 @@ void drawLeft()
     oled.clear(PAGE);
     oled.drawBitmap(leftImage);
     oled.display();
-    delay(IMAGE_DELAY);
 }
 //---------------------------------------------------------------
 void displayReplayScreen(void) {
