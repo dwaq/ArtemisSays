@@ -14,6 +14,7 @@ void drawUp(void);
 void drawRight(void);
 void drawDown(void);
 void drawLeft(void);
+void clearDisplay(void);
 void displayReplayScreen(void);
 void displayEndGame(void);
 void displayComputerTurn(int level);

@@ -20,6 +20,9 @@ void ArtemisSays::checkResponse(enum DIRECTIONS direction) {
     // go to next move
     move++;
 
+    // clear screen so player knows they can speak
+    clearDisplay();
+
     // when all moves are complete, go to the next level
     if (move == level) {
       // prepare for next level

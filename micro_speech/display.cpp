@@ -106,6 +106,11 @@ void drawLeft()
     oled.display();
 }
 //---------------------------------------------------------------
+void clearDisplay() {
+    oled.clear(PAGE);
+    oled.display();
+}
+//---------------------------------------------------------------
 void displayReplayScreen(void) {
     // Display replay text
     oled.setFontType(0);
@@ -128,6 +133,7 @@ void displayEndGame(void) {
     oled.print("GOODBYE");
     oled.display();
     delay(IMAGE_DELAY);
+    clearDisplay();
 }
 //---------------------------------------------------------------
 void displayComputerTurn(int level) {
@@ -154,6 +160,5 @@ void displayYourTurn(void) {
     delay(IMAGE_DELAY);
 
     // then clear screen to show that a move can be said
-    oled.clear(PAGE);
-    oled.display();
+    clearDisplay();
 }
