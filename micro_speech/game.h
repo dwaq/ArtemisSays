@@ -38,7 +38,6 @@ class ArtemisSays {
     void displaySequence(void);
 
     // start at the beginning
-    // TODO: do I need a state for the splash screen prior to this? 
     enum GAME_STATES state = WAIT_TO_START;
 
     // store sequence
