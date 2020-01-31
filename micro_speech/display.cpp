@@ -26,6 +26,7 @@ This sketch draws to the 64x48 pixel MicroOLED
 // I2C will result in a very slow update rate
 MicroOLED oled(PIN_RESET, DC_JUMPER);
 
+// works well as a delay for anything displayed
 #define IMAGE_DELAY 750
 
 void displaySplashScreen(void) {
