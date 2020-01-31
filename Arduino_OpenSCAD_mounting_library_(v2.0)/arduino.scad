@@ -565,7 +565,7 @@ megaComponents = [
 	[[49.53, 49.53, 0], [headerWidth, headerWidth * 8, headerHeight], [0, 0, 1], HEADER_F, "Black"],
 	[[49.53, 72.39, 0], [headerWidth, headerWidth * 8, headerHeight], [0, 0, 1], HEADER_F, "Black"],
 	[[1.27, 92.71, 0], [headerWidth * 18, headerWidth * 2, headerHeight], [0, 0, 1], HEADER_F, "Black"],
-	[[9.34, -6.5, 0],[12, 16, 11],[0, -1, 0], USB, "LightGray"],
+	[[9.34, -1.8, 0],[12, 16, 8],[0, -1, 0], USB, "LightGray"],
 	[[40.7, -1.8, 0], [9.0, 13.2, 10.9], [0, -1, 0], POWER, "Black" ]
 	];
 
