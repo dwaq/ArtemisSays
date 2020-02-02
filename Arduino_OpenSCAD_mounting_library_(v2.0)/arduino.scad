@@ -217,16 +217,21 @@ module boundingBox(boardType = UNO, offset = 0, height = 0, cornerRadius = 0, in
 	pos = ([boardPosition(boardType), pcbPosition(boardType), componentsPosition(boardType)])[include];
 	dim = ([boardDimensions(boardType), pcbDimensions(boardType), componentsDimensions(boardType)])[include];
 
+    // Artemis board is a little wider in the X dimension
+    // so this is the easiest way to modify the library
+    x_offset = offset + 2.5;
+    y_offset = offset;
+
 	//Depending on if height is set position and dimensions will change
 	position = [
-				pos[0] - offset, 
-				pos[1] - offset, 
+				pos[0] - x_offset, 
+				pos[1] - y_offset, 
 				(height == 0 ? pos[2] - offset : pos[2] )
 				];
 
 	dimensions = [
-				dim[0] + offset * 2, 
-				dim[1] + offset * 2, 
+				dim[0] + x_offset * 2, 
+				dim[1] + y_offset * 2, 
 				(height == 0 ? dim[2] + offset * 2 : height)
 				];
 
