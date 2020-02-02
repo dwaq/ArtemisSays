@@ -135,19 +135,23 @@ module enclosure(boardType = UNO, wall = 3, offset = 3, heightExtension = 10, co
 				}
 			}
 			
+            // because I manually edited the width,
+            // the holes didn't go the whole way through
+            fix_width = 10;
+            
 			//Holes for lid clips
 			translate([0, enclosureDepth * 0.75 - (offset + wall), enclosureHeight]) {
 				translate([-offset, 0, 0])
-					rotate([0, 180, 90]) clipHole(clipHeight = 10, holeDepth = wall + 0.2);
+					rotate([0, 180, 90]) clipHole(clipHeight = 10, holeDepth = wall + 0.2 + fix_width);
 				translate([offset + boardDim[0], 0, 0])
-					rotate([0, 180, 270]) clipHole(clipHeight = 10, holeDepth = wall + 0.2);
+					rotate([0, 180, 270]) clipHole(clipHeight = 10, holeDepth = wall + 0.2 + fix_width);
 			}
 		
 			translate([0, enclosureDepth * 0.25 - (offset + wall), enclosureHeight]) {
 				translate([-offset, 0, 0])
-					rotate([0, 180, 90]) clipHole(clipHeight = 10, holeDepth = wall + 0.2);
+					rotate([0, 180, 90]) clipHole(clipHeight = 10, holeDepth = wall + 0.2 + fix_width);
 				translate([offset + dimensions[0], 0, 0])
-					rotate([0, 180, 270]) clipHole(clipHeight = 10, holeDepth = wall + 0.2);
+					rotate([0, 180, 270]) clipHole(clipHeight = 10, holeDepth = wall + 0.2 + fix_width);
 			}	 
 		}
 		translate([0, 0, wall]) {
