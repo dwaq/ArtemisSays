@@ -12,7 +12,7 @@ translate([0, 0, -8.3]) {
 
 /*
 // lid
-translate([0, 0, 75]) {
+translate([0, 0, 14.6]) {
 	enclosureLid(MEGA2560);
 }
 */
