@@ -511,6 +511,21 @@ megaBoardShape = [
 		[  0.0, 96.52 ]
 		];
 
+// Shape of Artemis ATP board
+// but mirrored upside down
+// doesn't work because holes aren't aligned
+artemisBoardShape = [ 
+		[  0.0, 0.0 ],
+		[  58.42, 0.0 ],
+		[  58.42, 99.06 ],
+		[  55.88, 101.6 ],
+		[  7.62, 101.6 ],
+		[  5.08, 99.06 ],
+		[  5.08, 99.06 ],
+		[  0.0, 99.06  ],
+		[  0.0, 99.06 ]
+		];
+
 boardShapes = [ 	
 		ngBoardShape,   //NG
 		ngBoardShape,   //Diecimila
