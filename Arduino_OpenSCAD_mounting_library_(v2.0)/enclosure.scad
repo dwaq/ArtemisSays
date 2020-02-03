@@ -6,11 +6,11 @@ include <arduino.scad>
 //arduino(MEGA);
 
 // case
-translate([0, 0, -8.3]) {
+translate([7.5, 5, -14.6-8.3-3]) {
 	enclosure(MEGA, offset=2, heightExtension=3);
 }
 
 // lid
-translate([0, 0, 14.6]) {
+translate([7.5, 5, -3]) {
 	enclosureLid(MEGA2560, offset=2);
 }
