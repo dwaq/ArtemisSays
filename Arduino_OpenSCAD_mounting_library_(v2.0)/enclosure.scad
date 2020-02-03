@@ -32,10 +32,20 @@ buzzer_pos_x = 20;
 buzzer_pos_y = 95;
 
 // size & position of microphone
-mic_size_rad = 4;
+mic_size_rad = 0.5;
 mic_pos_x = 50;
 mic_pos_y = 95;
 
+// Arrange its children in a regular rectangular array
+//      spacing - the space between children origins
+//      n       - the number of children along x axis
+module arrange(spacing=50, n=5) {
+    nparts = $children;
+    for(i=[0:1:n-1], j=[0:nparts/n])
+        if (i+n*j < nparts)
+            translate([spacing*(i+1), spacing*j, 0]) 
+                children(i+n*j);
+}
 
 // subtract openings from lid
 difference() {
@@ -74,7 +84,33 @@ translate([buzzer_pos_x, buzzer_pos_y, -10]) {
 
 // hole for microphone
 translate([mic_pos_x, mic_pos_y, -10]) {
-	cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+	arrange(spacing=2, n=5) {
+		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+	}
 }
 
 }
