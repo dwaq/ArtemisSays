@@ -10,9 +10,7 @@ translate([0, 0, -8.3]) {
 	enclosure(MEGA, offset=2, heightExtension=3);
 }
 
-/*
 // lid
 translate([0, 0, 14.6]) {
-	enclosureLid(MEGA2560);
+	enclosureLid(MEGA2560, offset=2);
 }
-*/
