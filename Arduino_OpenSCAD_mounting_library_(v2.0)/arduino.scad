@@ -176,18 +176,22 @@ module enclosureLid( boardType = UNO, wall = 3, offset = 3, cornerRadius = 3, ve
 			translate([0, 0, -wall * 0.5])
 				boundingBox(boardType = boardType, height = wall * 0.5, offset = offset - 0.5, include=PCB, cornerRadius = wall);
 		
+			// I manually made the bounding box 2.5mm larger,
+			// so do the same thing here to move the lid clips into the right position
+			new_offset = offset + 2.5;
+
 			//Lid clips
 			translate([0, enclosureDepth * 0.75 - (offset + wall), 0]) {
-				translate([-offset, 0, 0])
+				translate([-new_offset, 0, 0])
 					rotate([0, 180, 90]) clip(clipHeight = 10);
-				translate([offset + boardDim[0], 0, 0])
+				translate([new_offset + boardDim[0], 0, 0])
 					rotate([0, 180, 270]) clip(clipHeight = 10);
 			}
 		
 			translate([0, enclosureDepth * 0.25 - (offset + wall), 0]) {
-				translate([-offset, 0, 0])
+				translate([-new_offset, 0, 0])
 					rotate([0, 180, 90]) clip(clipHeight = 10);
-				translate([offset + dimensions[0], 0, 0])
+				translate([new_offset + dimensions[0], 0, 0])
 					rotate([0, 180, 270]) clip(clipHeight = 10);
 			}
 
