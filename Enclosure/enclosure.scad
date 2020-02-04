@@ -40,7 +40,7 @@ button_pos_x = 12;
 button_pos_y = 9.2;
 
 // size & position of buzzer
-buzzer_size_rad = 12/2;
+buzzer_size_rad = 12.2/2;
 buzzer_pos_x = 17;
 buzzer_pos_y = 99;
 
