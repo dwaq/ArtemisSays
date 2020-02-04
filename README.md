@@ -96,8 +96,7 @@ Running an Example
 * Install and setup Arduino as described [above](#software-setup).
 * Download (or clone) this repo to favorite location
 * Open Arduino
-* Open an example from this repo through Arduino by clicking on the ```.ino``` file in the example directory
-  * ```micro_speech```
+* Open the code from this repo through Arduino by clicking on the ```ArtemisSays.ino``` file in the example directory
 * Select the ```SparkFun RedBoard Artemis ATP``` board (Tools->Board under 'SparkFun Apollo3')
 * Select the proper port to connect with the baord (Tools->Port)
   * Windows - COM Port
@@ -105,7 +104,7 @@ Running an Example
   * macOS - /dev/cu.usbserial* 
 * Change the **Bootloader** from *Ambiq Secure Bootloader (Default)* to *SparkFun Variable Loader (Enable w/ Artemis Bootloader)* (Tools->Bootloader)
   * (Your boards have received the upgraded bootloader already)
-* Change the ```SVL Baud Rate``` from *921600* to *230400*
+* Change the ```SVL Baud Rate``` to *921600*
 
 ### Upload
 * Compile with the ```Verify``` button (checkmark symbol)
