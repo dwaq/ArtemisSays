@@ -39,7 +39,7 @@ buzzer_pos_x = 17;
 buzzer_pos_y = 99;
 
 // size & position of microphone
-mic_size_rad = 0.5;
+mic_size_rad = 1;
 mic_pos_x = 46;
 mic_pos_y = 95;
 
@@ -94,32 +94,31 @@ translate([buzzer_pos_x, buzzer_pos_y, -10]) {
 
 // hole for microphone
 translate([mic_pos_x, mic_pos_y, -10]) {
-	arrange(spacing=2, n=5) {
-		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
-		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
-		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
-		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
-		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
-		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
-		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
-		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
-		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
-		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
-		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
-		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
-		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
-		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
-		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
-		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
-		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
-		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
-		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
-		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
-		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
-		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
-		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
-		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
-		cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+	arrange(spacing=3, n=1) {
+        hull() {
+            cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+            translate([10,0,0]) {
+                cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+            }
+        }
+        hull() {
+            cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+            translate([10,0,0]) {
+                cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+            }
+        }
+        hull() {
+            cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+            translate([10,0,0]) {
+                cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+            }
+        }
+        hull() {
+            cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+            translate([10,0,0]) {
+                cylinder(r=mic_size_rad, h=40, center=true, $fn=30);
+            }
+        }
 	}
 }
 
