@@ -24,7 +24,7 @@ display_pos_x = (enclosure_width-display_size_x)/2;
 display_pos_y = 54;
 
 // size & position of mounting screws for display
-display_screw_size_rad = 2.2/2;
+display_screw_size_rad = 2.1/2;
 display_screw_offset_pos_x = 2.2;
 display_screw_offset_pos_y = 2.2;
 
@@ -66,15 +66,18 @@ translate([7.5, 5, -3]) {
 translate([display_pos_x, display_pos_y, -10]) {
 	cube([display_size_x, display_size_y, 20]);
 
+    // Z offset here of -14.5 reaches the bottom
+    // and Z offset of -10 reaches the top
+    // so make a 3.5mm deep hole from the bottom
+    screw_offset = -14.5 + 3.5;
+
 	// left screw hole
-	// TODO: adjust Z offset so it doesn't go completely through lid
-	translate([-display_screw_offset_pos_x, display_size_y+display_screw_offset_pos_y, 0]) {
+	translate([-display_screw_offset_pos_x, display_size_y+display_screw_offset_pos_y, screw_offset]) {
 		cylinder(r=display_screw_size_rad, h=40, center=true, $fn=30);
 	}
 
 	// right screw hole
-	// TODO: adjust Z offset so it doesn't go completely through lid
-	translate([display_size_x+display_screw_offset_pos_x, display_size_y+display_screw_offset_pos_y, 0]) {
+	translate([display_size_x+display_screw_offset_pos_x, display_size_y+display_screw_offset_pos_y, screw_offset]) {
 		cylinder(r=display_screw_size_rad, h=40, center=true, $fn=30);
 	}
 }
