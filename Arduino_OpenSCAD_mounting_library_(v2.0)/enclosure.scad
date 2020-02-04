@@ -71,6 +71,11 @@ translate([display_pos_x, display_pos_y, -10]) {
     // so make a 3.5mm deep hole from the bottom
     screw_offset = -14.5 + 3.5;
 
+    // display cable
+    translate([0, -10, screw_offset]) {
+		cube([display_size_x, display_size_y, 20]);
+	}
+
 	// left screw hole
 	translate([-display_screw_offset_pos_x, display_size_y+display_screw_offset_pos_y, screw_offset]) {
 		cylinder(r=display_screw_size_rad, h=40, center=true, $fn=30);
