@@ -3,11 +3,13 @@ include <arduino.scad>
 // Full nclosure for the Artemis Says project
 
 // model of the board
-//arduino(MEGA);
+translate([7.5, 5, 0]) {
+    arduino(MEGA);
+}
 
 // case
-translate([7.5, 5, -14.6-8.3-3]) {
-	//enclosure(MEGA, offset=2, heightExtension=3);
+translate([7.5, 5, -45]) {
+	enclosure(MEGA, offset=2, heightExtension=3);
 }
 
 // total width
@@ -54,13 +56,15 @@ module arrange(spacing=50, n=5) {
                 children(i+n*j);
 }
 
+translate([7.5, 5, 45]) {
+
 // subtract openings from lid
 difference() {
 
 // lid
-translate([7.5, 5, -3]) {
+
 	enclosureLid(MEGA2560, offset=2);
-}
+translate([-7.5, -5, 0]) {
 
 // hole for display
 translate([display_pos_x, display_pos_y, -10]) {
@@ -126,5 +130,6 @@ translate([mic_pos_x, mic_pos_y, -10]) {
         }
 	}
 }
-
+}
+}
 }
