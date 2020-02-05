@@ -86,3 +86,6 @@ lint/tmp/
 
 # Visual Studio Code
 .vscode/
+
+# gcode
+*.gcode
