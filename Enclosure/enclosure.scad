@@ -18,17 +18,23 @@ enclosure_height = 111.6;
 // including tabs
 enclosure_depth = 13;
 
+// make display smaller in the Y direction
+display_y_difference = 1;
+
 // size & position of display
 display_size_x = 19.2;
-display_size_y = 21.1;
+display_size_y = 21.1-display_y_difference;
 // center X
 display_pos_x = (enclosure_width-display_size_x)/2;
-display_pos_y = 54;
+display_pos_y = 54+display_y_difference;
+
+// cable on display assembly
+display_cable_y = 7;
 
 // size & position of mounting screws for display
 display_screw_size_rad = 2.1/2;
-display_screw_offset_pos_x = 2.2;
-display_screw_offset_pos_y = 2.2;
+display_screw_offset_pos_x = 2.2-display_screw_size_rad;
+display_screw_offset_pos_y = 2.2+display_screw_size_rad;
 
 // size & position of reset button
 button_size_rad = 4.5/2;
@@ -36,7 +42,7 @@ button_pos_x = 12;
 button_pos_y = 9.2;
 
 // size & position of buzzer
-buzzer_size_rad = 12/2;
+buzzer_size_rad = 12.2/2;
 buzzer_pos_x = 17;
 buzzer_pos_y = 99;
 
@@ -76,8 +82,8 @@ translate([display_pos_x, display_pos_y, -10]) {
     screw_offset = -14.5 + 3.5;
 
     // display cable
-    translate([0, -10, screw_offset]) {
-		cube([display_size_x, display_size_y, 20]);
+    translate([0, -display_cable_y, screw_offset]) {
+		cube([display_size_x, display_cable_y, 20]);
 	}
 
 	// left screw hole
